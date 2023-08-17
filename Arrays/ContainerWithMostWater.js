@@ -11,7 +11,7 @@ Example:
     Output: 49
 */
 
-const getMaxWaterLevel = (arr) => {
+const getMaxWaterLevel_BruteForce = (arr) => {
     let maxWaterLevel = 0;
     for(let i = 0; i < arr.length - 1; i++){
         for(let j = i; j < arr.length; j++){
@@ -22,8 +22,30 @@ const getMaxWaterLevel = (arr) => {
     return maxWaterLevel;
 }
 
+const getMaxWaterLevel_Optimised = (arr) => {
+    let maxWaterLevel = 0;
+    let leftPointer = 0;
+    let rightPointer = arr.length - 1;
+
+    while(leftPointer < rightPointer) {
+        const waterLevel = Math.min(arr[leftPointer], arr[rightPointer]) * (rightPointer - leftPointer);
+        if(maxWaterLevel < waterLevel) maxWaterLevel = waterLevel;
+
+        if(arr[leftPointer] < arr[rightPointer]){
+            leftPointer++;
+        } else {
+            rightPointer--;
+        }
+    }
+
+    return maxWaterLevel;
+}
+
 const arr1 = [1, 8, 6, 2, 5, 4, 8, 3, 7]; // 49
 const arr2 = [4, 3, 2, 1, 4]; // 16
 
-console.log(getMaxWaterLevel(arr1)); // 49
-console.log(getMaxWaterLevel(arr2)); // 16
+console.log(getMaxWaterLevel_BruteForce(arr1)); //n^2
+console.log(getMaxWaterLevel_BruteForce(arr2)); //n^2
+
+console.log(getMaxWaterLevel_Optimised(arr1)); // n
+console.log(getMaxWaterLevel_Optimised(arr2)); // n
