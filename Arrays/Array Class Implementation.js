@@ -1,3 +1,7 @@
+/*
+ * Implemented a class replica for Arrays with the methods.
+ */
+
 class MyArray {
     constructor() {
         this.length = 0;
