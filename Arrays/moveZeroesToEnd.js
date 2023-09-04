@@ -47,4 +47,4 @@ const moveZeroesToEnd2 = (array) => {
   }
 
 console.log(moveZeroesToEnd1([2, 0, 3, 0, 0, 2]));
-console.log(moveZeroesToEnd2([0, 0, 0, 1, 2, 3]))
+console.log(moveZeroesToEnd2([0, 0, 0, 1, 2, 3]));
